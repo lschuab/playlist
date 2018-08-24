@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>track bin</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer src="scripts/bin.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header id="header-playlist">
+        <span class="instructions"><pre>            click an album to add its tracks to the bin</pre></span>
+      </header>
+      <main id="bin-maker">
+        <div id="album-scroll">        
+        </div>
+        <div id="bin-container">
+          <textarea name="" id="bin" rows="8" readonly></textarea>
+          <div id="buttons-container">
+            <button id="clear-tracks-btn">clear tracks</button>
+            <button id="submit-bin-btn">submit bin</button>
+          </div>
+
+        </div>
+
+
+      </main>
+      <footer>
+        <span id="copyright"><pre>            © 2018 Leandro Schuab</pre></span>
+      </footer>
+    </div>
+  </body>
+</html>
