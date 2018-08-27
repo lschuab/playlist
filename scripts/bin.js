@@ -1,7 +1,9 @@
 const albumScroll = document.getElementById('album-scroll');
 const bin = document.getElementById('bin');
 const apiKey = '27c16b31f7afa331a59fd0bed30d96e1';
+const tracks = document.getElementById('tracks');
 
+// Implementation using original API
 // axios.get('https://lit-fortress-6467.herokuapp.com/object')
 //   .then(response => {
 //       const data = response.data.results;
@@ -34,7 +36,33 @@ document.getElementById('search-btn').addEventListener('click', e => {
 
 albumScroll.addEventListener('click', e => {
   if (e.target && e.target.nodeName === "IMG") {
-    bin.textContent += e.target.id + "\n";
+    const selectedAlbum = document.getElementById('selected-album');
+    selectedAlbum.textContent = '';
+
+    tracks.textContent = '';
+
+    const albumName = e.target.id.split(': ');
+    axios.get(`http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=${albumName[0]}&album=${albumName[1]}&api_key=${apiKey}&format=json`)
+    .then(response => {
+      const albumData = response.data.album;
+      selectedAlbum.insertAdjacentHTML('beforeend', `
+        <p>Add tracks from<p>
+        <p>${e.target.id}</p>
+        <img src="${albumData.image[3]['#text']}" alt="" id="selected-art">
+      `);
+      for (const track of albumData.tracks.track) {
+        tracks.insertAdjacentHTML('beforeend', `
+          <option>${track.name} \t${Math.floor(track.duration / 60)}:${track.duration % 60}</option>
+        `);
+      }
+    });
+  }
+});
+
+document.getElementById('arrow').addEventListener('click', e => {
+  const selectedTrack = tracks.value;
+  if (selectedTrack) {
+    bin.textContent += selectedTrack + "\n";
   }
 });
 
