@@ -13,7 +13,13 @@
         <span class="instructions"><pre>            click an album to add its tracks to the bin</pre></span>
       </header>
       <main id="bin-maker">
-        <div id="album-scroll">        
+        <form action="" id="search-form">
+          <div id="search-div">
+            <input type="text" id="search-input" placeholder="search for albums...">
+            <button id="search-btn">search</button>
+          </div>
+        </form>
+        <div id="album-scroll">
         </div>
         <div id="bin-container">
           <textarea name="" id="bin" rows="8" readonly></textarea>

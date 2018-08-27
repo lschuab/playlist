@@ -160,6 +160,7 @@ form {
 .add-album {
   height: 8em;
   margin: 30px 30px;
+	border: solid 1px;
 }
 
 #bin-container {
@@ -194,4 +195,19 @@ textarea {
     background-color: #353526;
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+#search-div {
+	display: flex;
+	justify-content: flex-start;
+}
+
+#search-form {
+	margin: 20px;
+	width: 80%;
+}
+
+#search-input {
+	font-size: 2em;
+	margin-right: 30px;
 }
